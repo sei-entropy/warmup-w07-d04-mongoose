@@ -16,10 +16,9 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 
 // SOLUTION
 
-// Country.find({region: "Southern Europe"}).sort('-population').exec((err, country) => {
-//      console.log(country);
-//     db.close();
-// });
+
+
+
 
 // Clue #2: Now that we're here, we have insight that Carmen was seen attending language classes in
 // this country's officially recognized language. Check our databases and find out what language is
@@ -28,10 +27,9 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 ///////// we got the country code from the previous clue /////////
 
 // SOLUTION
-// Language.find({ countryCode: 'VAT' }, (err, lang) => {
-//     console.log(lang);
-//     db.close();
-// });
+
+
+
 
 
 // -- Clue #3: We have new news on the classes Carmen attended – our gumshoes tell us she's moved on
@@ -41,10 +39,8 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 ///////// we got the language from the previous clue /////////
 
 // SOLUTION
-// Language.find({ language: 'Italian', percentage: 100}, (err, language) => {
-//     console.log(language);
-//     db.close();
-// });
+
+
 
 
 // -- Clue #4: We're booking the first flight out – maybe we've actually got a chance to catch her this time.
@@ -55,18 +51,15 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 ///////// we got the code from the previous clue /////////
 
 // SOLUTION
-// Country.find({ code: 'SMR' }, (err, country) => {
-//         console.log(country);
-//         db.close();
-// });
+
+
+
 
 ///////// we got the name from the above find method /////////
 
 // SOLUTION
-// City.find({ countrycode: "SMR", name: { $ne: 'San Marino' } }, (err, city) => {
-//         console.log(city);
-//         db.close();
-// });
+
+
 
 
 // -- Clue #5: Oh no, she pulled a switch – there are two cities with very similar names, but in totally different
@@ -76,20 +69,16 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 ///////// we got the name from previous clue /////////
 
 // SOLUTION
-// City.find({ 'name': /^Serra/ }, (err, city) => {
-//         console.log(city);
-//         db.close();
-//     });
+
+
+
 
 ///////// we got the code from the above find method /////////
 
 // SOLUTION
 
 
-// Country.find({ code: 'BRA' }, (err, country) => {
-//     console.log(country);
-//     db.close();
-// });
+
 
 // -- Clue #6: We're close! Our South American agent says she just got a taxi at the airport, and is headed towards
 //  -- the capital! Look up the country's capital, and get there pronto! Send us the name of where you're headed and we'll
@@ -100,10 +89,7 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 // SOLUTION
 
 
-// City.find({ cityId: 211 }, (err, city) => {
-//     console.log(city);
-//     db.close();
-// });
+
 
 
 // -- Clue #7: She knows we're on to her – her taxi dropped her off at the international airport, and she beat us to
@@ -124,13 +110,14 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 
 // SOLUTION
 
-// City.find({ population: 91084 }, (err, city) => {
-//     console.log(city);
-//     db.close();
-// });
+
+
 
 // Where is Carmen?
 
 ///////// the above method will give us two cities one in the USA and the other in Turkey,  /////////
 ///////// since our previous clue pointed us to brazil we can tell that USA is closer than turkey to where we are /////////
-///////// so the final answer is "Santa Monica" /////////
+///////// so the final answer is? /////////
+
+
+
