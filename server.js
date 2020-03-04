@@ -10,11 +10,23 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
     console.log('the connection with mongod is established')
 })
 
+
 // Clue #1: We recently got word that someone fitting Carmen Sandiego's description has been
 // traveling through Southern Europe. She's most likely traveling someplace where she won't be noticed,
 // so find the least populated country in Southern Europe, and we'll start looking for her there.
 
 // SOLUTION
+
+    Country.find({ $and: [ { region: "Southern Europe" }, { $min:population}  ] }, (error, result)=> {
+      if (error) {
+        console.log('===========================');
+        console.log('ERROR:', error);
+      } else {
+        console.log('SUCC CREATE:', result);
+        res.send(result)
+      }
+    });
+ 
 
 
 
@@ -27,6 +39,16 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 ///////// we got the country code from the previous clue /////////
 
 // SOLUTION
+
+    Language.find({language},{ $or: [ { countryCode: "ITA",countryCode:"MKD",countryCode:"MLT",countryCode:"PRT",countryCode:"SMR",countryCode:"SVN",countryCode:"VAT",countryCode:"YUG" }  ] }, (error, result)=> {
+      if (error) {
+        console.log('===========================');
+        console.log('ERROR:', error);
+      } else {
+        console.log('SUCC CREATE:', result);
+        res.send(result)
+      }
+    });
 
 
 
@@ -43,6 +65,7 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 
 
 
+
 // -- Clue #4: We're booking the first flight out – maybe we've actually got a chance to catch her this time.
 //  -- There are only two cities she could be flying to in the country. One is named the same as the country – that
 //  -- would be too obvious. We're following our gut on this one; find out what other city in that country she might
@@ -51,6 +74,17 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 ///////// we got the code from the previous clue /////////
 
 // SOLUTION
+
+
+    City.find({}, (error, result)=> {
+      if (error) {
+        console.log('===========================');
+        console.log('ERROR:', error);
+      } else {
+        console.log('SUCC CREATE:', result);
+        res.send(result)
+      }
+    });
 
 
 
