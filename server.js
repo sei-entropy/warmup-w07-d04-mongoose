@@ -17,6 +17,19 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 // SOLUTION
 
 
+// Country.find({
+//     $and : [ { continent: 'Europe'} , { region: 'Southern Europe'}, {population:  {$lte: 1500 } }] } , (err, Country) => {
+//     if (err) {
+//       console.log('=================== ERR ================ ');
+//       console.log(err);
+//     } else {
+//       console.log('Result : ', Country);
+//     }
+//     db.close();
+//   });
+  
+
+Country.find({ region: "Southern Europe" }).sort({ population: -1 })
 
 
 
@@ -27,6 +40,9 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 ///////// we got the country code from the previous clue /////////
 
 // SOLUTION
+
+
+CountryLanguages.find({ countryCode: "VAT" })
 
 
 
@@ -40,7 +56,19 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 
 // SOLUTION
 
-
+Language.find(
+    {
+       language: 'Italian',  
+    percentage: 100
+    },(err, language) => {
+        if (err) {
+          console.log('=================== ERR ================ ');
+          console.log(err);
+        } else {
+          console.log('Result : ', language);
+        }
+        db.close();
+      });
 
 
 // -- Clue #4: We're booking the first flight out – maybe we've actually got a chance to catch her this time.
