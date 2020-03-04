@@ -16,9 +16,9 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 
 // SOLUTION
 
-
-
-
+Country.find({region: "Southern Europe"}).sort('-population').exec((err, country) => {
+       console.log("country is ", country);
+});
 
 // Clue #2: Now that we're here, we have insight that Carmen was seen attending language classes in
 // this country's officially recognized language. Check our databases and find out what language is
@@ -28,8 +28,9 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 
 // SOLUTION
 
-
-
+Language.find({ countryCode: 'VAT' }, (err, language) => {
+     console.log("Lang is " ,language);
+});
 
 
 // -- Clue #3: We have new news on the classes Carmen attended – our gumshoes tell us she's moved on
@@ -40,7 +41,9 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 
 // SOLUTION
 
-
+Language.find({ language: "Italian", percentage :100}, (err, lang) => {
+  console.log("country speake same language is ", lang);
+});
 
 
 // -- Clue #4: We're booking the first flight out – maybe we've actually got a chance to catch her this time.
@@ -53,7 +56,9 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 // SOLUTION
 
 
-
+Language.find({ countryCode :"SMR"}, (err, lang) => {
+  console.log("country speake same language is ", lang);
+});
 
 ///////// we got the name from the above find method /////////
 
@@ -71,7 +76,10 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 // SOLUTION
 
 
-
+// Vampire.find({ location: { $not: /^Rome.*/ } }, (err, vam) => {
+//   console.log(" vampires love ribbons but do not have brown eyes  " + vam);
+//   db.close();
+// });
 
 ///////// we got the code from the above find method /////////
 
