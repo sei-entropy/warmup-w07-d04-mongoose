@@ -16,7 +16,12 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 
 // SOLUTION
 
+// Country.find({region: "Southern Europe"}).sort('-population').exec((err, country) => {
+//     console.log("===================================================================");
 
+//      console.log(country);
+//     db.close();
+// });
 
 
 
@@ -28,8 +33,11 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 
 // SOLUTION
 
-
-
+// Language.find({ countryCode: 'VAT' }, (err, lang) => {
+//        console.log("===================================================================");
+//     console.log(lang);
+//     db.close();
+// });
 
 
 // -- Clue #3: We have new news on the classes Carmen attended – our gumshoes tell us she's moved on
@@ -39,6 +47,12 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 ///////// we got the language from the previous clue /////////
 
 // SOLUTION
+
+// Language.find({ language: 'Italian', percentage: 100}, (err, language) => {
+// console.log("===================================================================");
+//     console.log(language);
+//     db.close();
+// });
 
 
 
@@ -51,7 +65,10 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 ///////// we got the code from the previous clue /////////
 
 // SOLUTION
-
+Country.find({ code: 'SMR' }, (err, country) => {
+        console.log(country);
+        db.close();
+});
 
 
 
