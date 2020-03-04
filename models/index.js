@@ -14,7 +14,7 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
     console.log('the connection with mongod is established')
 })
 
-///////////// Delete Methods ///////////
+/////////// Delete Methods ///////////
 
 // City.deleteMany({}, function (err) {
 //     console.log('city collection removed')
@@ -29,7 +29,7 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 // });
 
 
-/////////////// Insert Methods /////////////
+// ///////////// Insert Methods /////////////
 
 
 // City.insertMany(citySeeds, (error, city) => {
