@@ -13,11 +13,16 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 // Clue #1: We recently got word that someone fitting Carmen Sandiego's description has been
 // traveling through Southern Europe. She's most likely traveling someplace where she won't be noticed,
 // so find the least populated country in Southern Europe, and we'll start looking for her there.
-
 // SOLUTION
-
-
-
+// country in Southern Europe
+// Country.find({ region: 'Southern Europe' }, (error, result) => {
+//     if (error) {
+//         console.log(error);
+//     }
+//     else {
+//         console.log("SOLUTION" + result);
+//     }
+// })
 
 
 // Clue #2: Now that we're here, we have insight that Carmen was seen attending language classes in
@@ -25,11 +30,33 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 // spoken in this country, so we can call in a translator to work with you.
 
 ///////// we got the country code from the previous clue /////////
-
 // SOLUTION
-
-
-
+//language ==> countryCode ==>  --> Southern Europe
+// Country.find({ region: 'Southern Europe' }, (error, result) => {
+//     if (error) {
+//         console.log(error);
+//     }
+//     else {
+//             console.log(result.code);
+//     }
+// })
+// Language.find({ countryCode: {}, isofficial: true }, (error, result) => {
+//     if (error) {
+//         console.log(error);
+//     }
+//     else {
+//         console.log("SOLUTION" + result);
+//     }
+// })
+// Country.find({ region: 'Southern Europe' }, (error, result) => {
+//     if (error) {
+//         console.log(error);
+//     }
+//     else {
+//         result.find({})
+//         console.log("SOLUTION" + result);
+//     }
+// })
 
 
 // -- Clue #3: We have new news on the classes Carmen attended – our gumshoes tell us she's moved on
@@ -39,8 +66,15 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 ///////// we got the language from the previous clue /////////
 
 // SOLUTION
-
-
+//country
+// Country.find({ code: 'YUG' }, (error, result) => {
+//     if (error) {
+//         console.log(error);
+//     }
+//     else {
+//         console.log(result);
+//     }
+// })
 
 
 // -- Clue #4: We're booking the first flight out – maybe we've actually got a chance to catch her this time.
@@ -118,6 +152,3 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 ///////// the above method will give us two cities one in the USA and the other in Turkey,  /////////
 ///////// since our previous clue pointed us to brazil we can tell that USA is closer than turkey to where we are /////////
 ///////// so the final answer is? /////////
-
-
-
