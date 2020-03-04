@@ -17,6 +17,11 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 // SOLUTION
 
 
+Country.findOne({ region: "Southern Europe" })
+    .sort({ population: 1 })
+    .exec((err, result) => {
+        console.log(result);
+    });
 
 
 
@@ -27,6 +32,11 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 ///////// we got the country code from the previous clue /////////
 
 // SOLUTION
+
+Language.find({ countryCode: 'VAT' }, (err, lang) => {
+    console.log(lang);
+    db.close();
+});
 
 
 
@@ -40,6 +50,11 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 
 // SOLUTION
 
+Language.find({ language: 'Italian', percentage: 100}, (err, language) => {
+    console.log(language);
+    db.close();
+});
+
 
 
 
@@ -51,6 +66,11 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 ///////// we got the code from the previous clue /////////
 
 // SOLUTION
+
+// Country.find({ code: 'SMR' }, (err, country) => {
+//         console.log(country);
+//         db.close();
+// });
 
 
 
