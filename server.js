@@ -1,24 +1,26 @@
-const mongoose = require('mongoose')
-const database = require('./models/index')
-const City = database.City
-const Country = database.Country
-const Language = database.Language
+const mongoose = require('mongoose');
+const database = require('./models/index');
+const City = database.City;
+const Country = database.Country;
+const Language = database.Language;
 const db = mongoose.connection;
 const mongoURI = 'mongodb://localhost:27017/carmen';
 
 mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
     console.log('the connection with mongod is established')
-})
+});
 
 // Clue #1: We recently got word that someone fitting Carmen Sandiego's description has been
 // traveling through Southern Europe. She's most likely traveling someplace where she won't be noticed,
 // so find the least populated country in Southern Europe, and we'll start looking for her there.
 
 // SOLUTION
-
-
-
-
+let carmenCountry = -1;
+Country.find({region: 'Southern Europe'}, [], {limit: 1, sort: {population: 1}}, (error, country) => {
+    carmenCountry = country[0];
+    console.log('She is in', carmenCountry.governmentform);
+    findLanguage(carmenCountry);
+});
 
 // Clue #2: Now that we're here, we have insight that Carmen was seen attending language classes in
 // this country's officially recognized language. Check our databases and find out what language is
@@ -27,9 +29,11 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 ///////// we got the country code from the previous clue /////////
 
 // SOLUTION
-
-
-
+const findLanguage = function (carmenCountry) {
+Language.find({countryCode: carmenCountry.code}, (error, lang) => {
+    console.log('she is taking classes in', lang[0].language);
+    findNextCountry(lang[0].language);
+})};
 
 
 // -- Clue #3: We have new news on the classes Carmen attended – our gumshoes tell us she's moved on
@@ -40,7 +44,11 @@ mongoose.connect(mongoURI, { useNewUrlParser: true }, () => {
 
 // SOLUTION
 
-
+const findNextCountry = function(lang) {
+    Language.findOne({language: lang}, [], {limit: 1 ,sort:  {percentage: 1}}, function(error, lang) {
+        console.log(lang.countryCode);
+    });
+};
 
 
 // -- Clue #4: We're booking the first flight out – maybe we've actually got a chance to catch her this time.
